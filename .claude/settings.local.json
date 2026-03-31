@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx shadcn@latest init --defaults --yes)",
+      "Bash(npx shadcn@latest add badge card separator tooltip --yes)",
+      "Bash(mkdir -p /c/Users/kingz/.vscode/ZaybishTariqPortfolio/zaybish-portfolio/src/data)",
+      "Bash(mkdir -p /c/Users/kingz/.vscode/ZaybishTariqPortfolio/zaybish-portfolio/src/hooks)",
+      "Bash(mkdir -p /c/Users/kingz/.vscode/ZaybishTariqPortfolio/zaybish-portfolio/src/components/sections)",
+      "Bash(mkdir -p /c/Users/kingz/.vscode/ZaybishTariqPortfolio/zaybish-portfolio/src/components/layout)",
+      "Bash(mkdir -p /c/Users/kingz/.vscode/ZaybishTariqPortfolio/zaybish-portfolio/public/images)",
+      "Bash(npm run:*)",
+      "Bash(node -e \"const l = require\\(''lucide-react''\\); console.log\\(Object.keys\\(l\\).filter\\(k => k.toLowerCase\\(\\).includes\\(''git''\\) || k.toLowerCase\\(\\).includes\\(''linked''\\)\\)\\)\")"
+    ]
+  }
+}
