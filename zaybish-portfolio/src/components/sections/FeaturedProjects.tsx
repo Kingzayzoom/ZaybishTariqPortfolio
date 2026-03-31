@@ -3,99 +3,82 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { projects } from "@/data/projects";
 
 export function FeaturedProjects() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
-      <div className="mb-12 flex items-end justify-between">
-        <div>
-          <p className="mb-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            Selected Work
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Projects
+    <section className="section-shell py-20">
+      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="max-w-2xl space-y-4">
+          <p className="eyebrow">Case Studies</p>
+          <h2 className="text-balance text-5xl font-semibold tracking-[-0.05em] text-white sm:text-6xl">
+            Curated <span className="magenta-accent">work</span>
           </h2>
+          <p className="text-base leading-relaxed text-slate-300 sm:text-lg">
+            A selection of projects that best show how I think through product, engineering, and measurable impact.
+          </p>
         </div>
-        <Link
-          href="/projects"
-          className="hidden items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground sm:flex"
-        >
-          View all <ArrowRight size={14} />
+        <Link href="/projects" className="secondary-button w-fit">
+          See more projects <ArrowRight size={16} />
         </Link>
       </div>
 
       <div className="space-y-6">
-        {projects.map((project, i) => (
+        {projects.slice(0, 4).map((project, index) => (
           <motion.div
             key={project.slug}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
+            transition={{ duration: 0.45, delay: index * 0.06 }}
           >
             <Link
               href={`/projects/${project.slug}`}
-              className="group flex flex-col gap-4 rounded-xl border border-border/50 bg-card p-6 transition-colors hover:border-border sm:flex-row sm:items-center"
+              className="group grid gap-6 rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,20,0.92),rgba(13,13,15,0.97))] p-6 transition hover:-translate-y-1 hover:border-white/20 lg:grid-cols-[90px_minmax(0,1fr)_300px]"
             >
-              {/* Number + gradient accent */}
-              <div
-                className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${project.accentColor} text-white`}
-              >
-                <span className="font-mono text-xs font-bold">{project.number}</span>
+              <div className="flex items-start justify-between lg:block">
+                <p className="font-mono text-4xl text-slate-600">{project.number}</p>
+                <p className="mt-3 text-xs uppercase tracking-[0.22em] text-slate-500">{project.date}</p>
               </div>
 
-              <div className="flex-1 min-w-0">
-                <div className="mb-1 flex flex-wrap items-center gap-2">
-                  <h3 className="text-base font-semibold">{project.title}</h3>
-                  <Badge variant="secondary" className="text-xs">
-                    {project.category}
-                  </Badge>
+              <div className="space-y-4">
+                <div className="space-y-3">
+                  <p className="eyebrow !text-[0.66rem]">{project.category}</p>
+                  <h3 className="text-balance text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">
+                    {project.title}
+                  </h3>
+                  <p className="max-w-2xl text-base leading-relaxed text-slate-300">{project.shortDescription}</p>
                 </div>
-                <p className="text-sm text-muted-foreground line-clamp-1">
-                  {project.shortDescription}
-                </p>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {project.tech.slice(0, 4).map((t) => (
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.slice(0, 8).map((item) => (
                     <span
-                      key={t}
-                      className="rounded border border-border/50 px-1.5 py-0.5 font-mono text-xs text-muted-foreground"
+                      key={item}
+                      className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-slate-300"
                     >
-                      {t}
+                      {item}
                     </span>
                   ))}
-                  {project.tech.length > 4 && (
-                    <span className="rounded border border-border/50 px-1.5 py-0.5 font-mono text-xs text-muted-foreground">
-                      +{project.tech.length - 4}
-                    </span>
-                  )}
                 </div>
               </div>
 
-              {project.metricValue && (
-                <div className="shrink-0 text-right">
-                  <p className="text-2xl font-black">{project.metricValue}</p>
-                  <p className="text-xs text-muted-foreground">{project.metricLabel}</p>
+              <div className={`project-cover rounded-[1.5rem] border border-white/8 bg-gradient-to-br ${project.accent} p-5 text-slate-950`}>
+                <div className="relative flex h-full min-h-52 flex-col justify-between rounded-[1.2rem] border border-white/20 bg-white/12 p-5 backdrop-blur">
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-900/65">{project.metric.label}</p>
+                    <p className="mt-3 text-5xl font-semibold tracking-[-0.06em]">{project.metric.value}</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-sm text-slate-900/75">{project.summary}</p>
+                    <div className="flex items-center gap-2 text-sm text-slate-900/75">
+                      View case study <ArrowRight size={15} className="transition group-hover:translate-x-1" />
+                    </div>
+                  </div>
                 </div>
-              )}
-
-              <ArrowRight
-                size={16}
-                className="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1"
-              />
+              </div>
             </Link>
           </motion.div>
         ))}
-      </div>
-
-      <div className="mt-8 sm:hidden">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          View all projects <ArrowRight size={14} />
-        </Link>
       </div>
     </section>
   );

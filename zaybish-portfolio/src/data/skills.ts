@@ -10,22 +10,35 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS"],
+    skills: ["React", "Next.js", "Tailwind CSS", "Streamlit", "Gradio"],
   },
   {
     label: "Backend & Databases",
-    skills: ["Flask", "Node.js", "Django", "Spring Boot", "MySQL", "SQLite"],
+    skills: ["Flask", "Node.js", "Django", "Spring Boot", "MySQL", "SQLite", "Firebase", "JWT Auth"],
   },
   {
-    label: "ML & Data",
-    skills: ["TensorFlow", "scikit-learn", "Keras", "Pandas"],
+    label: "AI / ML",
+    skills: [
+      "TensorFlow",
+      "scikit-learn",
+      "Keras",
+      "Pandas",
+      "LlamaIndex",
+      "FAISS",
+      "Chroma",
+      "Gemini API",
+      "Cohere",
+      "Ollama",
+      "Mistral",
+      "Phi-2",
+    ],
   },
   {
-    label: "Cloud & DevOps",
-    skills: ["Microsoft Azure", "AWS", "Docker"],
+    label: "Document & OCR",
+    skills: ["PyMuPDF", "pdfplumber", "OpenCV", "PIL", "Tesseract", "PaddleOCR", "EasyOCR"],
   },
   {
-    label: "Tools",
-    skills: ["Git", "Jira", "Postman", "Firebase"],
+    label: "Cloud & Tools",
+    skills: ["AWS", "Azure", "Docker", "Git", "GitHub", "Postman", "Jira", "Google Colab"],
   },
 ];

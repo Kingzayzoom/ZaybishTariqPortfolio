@@ -1,160 +1,185 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/social-icons";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
-import { experiences } from "@/data/experience";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { skillGroups } from "@/data/skills";
 import { siteConfig } from "@/data/site-config";
 
 export function AboutContent() {
   return (
-    <div className="grid gap-16 lg:grid-cols-[1fr_2fr]">
-      {/* Sidebar */}
+    <div className="grid gap-14 pb-10 lg:grid-cols-[0.95fr_1.4fr]">
       <motion.aside
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45 }}
         className="space-y-6"
       >
-        <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-4xl font-black text-white">
-          ZT
+        <div className="glass-panel overflow-hidden p-5">
+          <div className="rounded-[1.75rem] border border-border/60 bg-[radial-gradient(circle_at_top_left,rgba(54,142,255,0.22),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(34,211,154,0.16),transparent_30%),rgba(255,255,255,0.04)] p-5">
+            <div className="overflow-hidden rounded-[1.5rem] border border-white/10">
+              <Image
+                src="/images/headshot.jpg"
+                alt="Portrait of Zaybish Tariq"
+                width={900}
+                height={900}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
+
+            <h1 className="mt-6 text-4xl font-semibold tracking-[-0.05em]">{siteConfig.name}</h1>
+            <p className="mt-2 text-base text-muted-foreground">{siteConfig.title}</p>
+            <div className="mt-5 flex items-center gap-2 text-sm text-muted-foreground">
+              <MapPin size={15} />
+              {siteConfig.location}
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{siteConfig.availability}</p>
+          </div>
         </div>
 
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">Zaybish Tariq</h1>
-          <p className="text-sm text-muted-foreground">Full Stack Developer &amp; ML Engineer</p>
+        <div className="glass-panel p-6">
+          <p className="eyebrow">Quick Context</p>
+          <div className="mt-5 space-y-3">
+            <div className="rounded-2xl border border-border/60 bg-background/45 p-4">
+              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Background</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{siteConfig.identity.background}</p>
+            </div>
+            <div className="rounded-2xl border border-border/60 bg-background/45 p-4">
+              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Started With</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{siteConfig.identity.origin}</p>
+            </div>
+            <div className="rounded-2xl border border-border/60 bg-background/45 p-4">
+              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Based In</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{siteConfig.identity.base}</p>
+            </div>
+          </div>
         </div>
 
-        <div className="flex gap-3">
-          <a
-            href={siteConfig.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-border transition-colors hover:bg-muted"
-            aria-label="GitHub"
-          >
-            <GithubIcon size={15} />
-          </a>
-          <a
-            href={siteConfig.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-border transition-colors hover:bg-muted"
-            aria-label="LinkedIn"
-          >
-            <LinkedinIcon size={15} />
-          </a>
-          <a
-            href={`mailto:${siteConfig.socials.email}`}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-border transition-colors hover:bg-muted"
-            aria-label="Email"
-          >
-            <Mail size={15} />
-          </a>
-        </div>
-
-        <div className="text-sm text-muted-foreground space-y-1">
-          <p>Crozet, Virginia</p>
-          <p>US Citizen</p>
-          <p>Available for SWE roles</p>
+        <div className="glass-panel p-6">
+          <p className="eyebrow">Links</p>
+          <div className="mt-5 space-y-3 text-sm">
+            <a
+              href={siteConfig.socials.github}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/45 px-4 py-3 text-muted-foreground transition hover:text-foreground"
+            >
+              GitHub
+              <ArrowUpRight size={15} />
+            </a>
+            <a
+              href={siteConfig.socials.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/45 px-4 py-3 text-muted-foreground transition hover:text-foreground"
+            >
+              LinkedIn
+              <ArrowUpRight size={15} />
+            </a>
+            <a
+              href={`mailto:${siteConfig.socials.email}`}
+              className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/45 px-4 py-3 text-muted-foreground transition hover:text-foreground"
+            >
+              Email
+              <Mail size={15} />
+            </a>
+          </div>
         </div>
       </motion.aside>
 
-      {/* Main content */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="space-y-14"
+        transition={{ duration: 0.45, delay: 0.08 }}
+        className="space-y-12"
       >
-        {/* Bio */}
-        <section>
-          <p className="mb-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">About</p>
-          <div className="space-y-4 leading-relaxed text-muted-foreground">
-            <p>
-              I&apos;m Zaybish — a CS student at Virginia Tech who got into programming because I wanted to build
-              things that actually work for people, not just pass tests.
-            </p>
-            <p>
-              My sweet spot is the intersection of full-stack development and machine learning. At SEO in NYC last
-              summer, my team built an AI-powered fitness platform that won Best Overall Project out of 28 teams —
-              and the part I&apos;m most proud of is the recommendation engine that actually got smarter the more
-              people used it.
-            </p>
-            <p>
-              I write Python and JavaScript most days, but I&apos;ve shipped code in everything from Rust to Swift.
-              When I&apos;m not coding, I&apos;m probably exploring a new city or figuring out how to optimize
-              something that doesn&apos;t need optimizing.
-            </p>
-            <p>I&apos;m looking for full-time SWE roles and interesting freelance projects. Let&apos;s build something.</p>
+        <section className="space-y-5">
+          <p className="eyebrow">About</p>
+          <h2 className="text-balance text-5xl font-semibold tracking-[-0.05em]">
+            I started coding by solving a problem at home.
+          </h2>
+          <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {siteConfig.about.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </section>
 
-        <Separator />
+        <section className="grid gap-6 md:grid-cols-2">
+          <article className="glass-panel p-6">
+            <p className="eyebrow">What Drives Me</p>
+            <p className="mt-5 text-xl font-semibold tracking-[-0.04em]">
+              Building software that creates real movement for real people.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              I care about useful products, strong engineering, and work that feels grounded in an actual need rather
+              than a throwaway demo.
+            </p>
+          </article>
 
-        {/* Experience & Education */}
-        <section>
-          <p className="mb-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">Experience &amp; Education</p>
-          <div className="relative space-y-8 before:absolute before:left-0 before:top-2 before:h-full before:w-px before:bg-border">
-            {experiences.map((exp) => (
-              <div key={exp.company + exp.role} className="pl-6 relative">
-                <div className="absolute left-0 top-1.5 h-2 w-2 -translate-x-[4.5px] rounded-full bg-border ring-2 ring-background" />
-                <div className="mb-1 flex flex-wrap items-center gap-2">
-                  <h3 className="font-semibold">{exp.role}</h3>
-                  <Badge variant="outline" className="text-xs">
-                    {exp.type}
-                  </Badge>
-                </div>
-                <p className="mb-1 text-sm text-muted-foreground">
-                  {exp.company} &middot; {exp.location}
-                </p>
-                <p className="mb-3 font-mono text-xs text-muted-foreground">{exp.date}</p>
-                <ul className="space-y-1.5">
-                  {exp.bullets.map((b) => (
-                    <li key={b} className="flex gap-2 text-sm text-muted-foreground">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                {exp.tech && (
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {exp.tech.map((t) => (
+          <article className="glass-panel p-6">
+            <p className="eyebrow">Community</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {siteConfig.communities.map((community) => (
+                <span
+                  key={community}
+                  className="rounded-full border border-border/60 bg-background/45 px-3 py-1 text-xs text-muted-foreground"
+                >
+                  {community}
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Community has been a big part of how I grow as an engineer and how I want to show up for others.
+            </p>
+          </article>
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="glass-panel p-6">
+            <p className="eyebrow">Skills</p>
+            <div className="mt-6 space-y-5">
+              {skillGroups.map((group) => (
+                <div
+                  key={group.label}
+                  className="grid gap-3 border-b border-border/50 pb-5 last:border-b-0 last:pb-0 sm:grid-cols-[150px_1fr]"
+                >
+                  <p className="text-sm font-medium">{group.label}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
                       <span
-                        key={t}
-                        className="rounded border border-border/50 px-1.5 py-0.5 font-mono text-xs text-muted-foreground"
+                        key={skill}
+                        className="rounded-full border border-border/60 bg-background/45 px-3 py-1 text-xs text-muted-foreground"
                       >
-                        {t}
+                        {skill}
                       </span>
                     ))}
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <Separator />
-
-        {/* Skills */}
-        <section>
-          <p className="mb-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">Skills</p>
-          <div className="space-y-4">
-            {skillGroups.map((group) => (
-              <div key={group.label} className="grid grid-cols-[120px_1fr] gap-4 items-start">
-                <span className="text-xs font-medium text-muted-foreground pt-1">{group.label}</span>
-                <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="text-xs">
-                      {skill}
-                    </Badge>
-                  ))}
                 </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="glass-panel p-6">
+            <p className="eyebrow">Education</p>
+            <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">{siteConfig.education.school}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {siteConfig.education.degree} · {siteConfig.education.gpa} · {siteConfig.education.graduation}
+            </p>
+            <div className="mt-6 space-y-3">
+              <p className="text-sm font-medium">Coursework</p>
+              <div className="flex flex-wrap gap-2">
+                {siteConfig.education.coursework.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-border/60 bg-background/45 px-3 py-1 text-xs text-muted-foreground"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
       </motion.div>

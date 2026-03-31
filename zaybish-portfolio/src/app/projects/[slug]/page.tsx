@@ -1,123 +1,141 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink } from "lucide-react";
-import { GithubIcon } from "@/components/ui/social-icons";
-import { Badge } from "@/components/ui/badge";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) return {};
-  return { title: project.title, description: project.shortDescription };
+  const project = projects.find((item) => item.slug === slug);
+
+  if (!project) {
+    return {};
+  }
+
+  return {
+    title: project.title,
+    description: project.shortDescription,
+  };
 }
 
 export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) notFound();
+  const project = projects.find((item) => item.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
 
   return (
-    <div className="min-h-screen pt-24">
-      <div className="mx-auto max-w-3xl px-6 py-12">
-        <Link
-          href="/projects"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft size={14} /> Back to Projects
+    <div className="page-shell">
+      <div className="section-shell pb-10 pt-32">
+        <Link href="/projects" className="secondary-button !px-4 !py-2.5">
+          <ArrowLeft size={15} />
+          Back to Projects
         </Link>
 
-        {/* Header */}
-        <div className="mb-10">
-          <div className="mb-4 flex items-center gap-3">
-            <span className="font-mono text-sm text-muted-foreground">{project.number}</span>
-            <Badge variant="secondary">{project.category}</Badge>
-          </div>
-          <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
-            {project.title}
-          </h1>
-          <p className="text-lg text-muted-foreground">{project.shortDescription}</p>
-        </div>
+        <section className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-6">
+            <p className="eyebrow">{project.category}</p>
+            <h1 className="text-balance text-5xl font-semibold tracking-[-0.06em] sm:text-6xl">{project.title}</h1>
+            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">{project.summary}</p>
 
-        {/* Hero card */}
-        <div
-          className={`mb-10 flex h-48 items-center justify-center rounded-xl bg-gradient-to-br ${project.accentColor} text-white`}
-        >
-          {project.metricValue && (
-            <div className="text-center">
-              <p className="text-5xl font-black">{project.metricValue}</p>
-              <p className="mt-1 text-sm font-medium opacity-80">{project.metricLabel}</p>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-border/60 bg-background/50 px-3 py-1 text-xs text-muted-foreground"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
-          )}
-        </div>
 
-        {/* Tech stack */}
-        <div className="mb-10">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Tech Stack
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((t) => (
-              <Badge key={t} variant="outline">
-                {t}
-              </Badge>
-            ))}
+            <div className="flex flex-wrap gap-3">
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noreferrer" className="primary-button">
+                  View GitHub
+                  <ArrowUpRight size={15} />
+                </a>
+              )}
+              {project.live && (
+                <a href={project.live} target="_blank" rel="noreferrer" className="secondary-button">
+                  Live Project
+                  <ArrowUpRight size={15} />
+                </a>
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* Description */}
-        <div className="mb-10">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-            Overview
-          </h2>
-          <p className="leading-relaxed text-muted-foreground">{project.fullDescription}</p>
-        </div>
+          <div className={`project-cover rounded-[2rem] border border-white/10 bg-gradient-to-br ${project.accent} p-6 text-slate-950`}>
+            <div className="relative flex h-full min-h-72 flex-col justify-between rounded-[1.6rem] border border-white/20 bg-white/12 p-6 backdrop-blur">
+              <div className="space-y-3">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-900/70">{project.metric.label}</p>
+                <p className="text-5xl font-semibold tracking-[-0.06em]">{project.metric.value}</p>
+                <p className="text-sm text-slate-900/75">{project.date}</p>
+              </div>
+              <p className="max-w-sm text-sm leading-relaxed text-slate-900/75">{project.shortDescription}</p>
+            </div>
+          </div>
+        </section>
 
-        {/* Highlights */}
-        <div className="mb-10">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-            Key Results
-          </h2>
-          <ul className="space-y-3">
-            {project.highlights.map((h) => (
-              <li key={h} className="flex gap-3 text-sm text-muted-foreground">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" />
-                {h}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <section className="mt-12 grid gap-6 lg:grid-cols-2">
+          <article className="glass-panel p-6">
+            <p className="eyebrow">The Problem</p>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground">{project.problem}</p>
+          </article>
 
-        {/* Links */}
-        <div className="flex gap-4">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
-            >
-              <GithubIcon size={15} /> View Code
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-80"
-            >
-              <ExternalLink size={15} /> Live Demo
-            </a>
-          )}
-        </div>
+          <article className="glass-panel p-6">
+            <p className="eyebrow">Key Result</p>
+            <p className="mt-5 text-4xl font-semibold tracking-[-0.05em]">{project.metric.value}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{project.metric.label}</p>
+          </article>
+        </section>
+
+        <section className="mt-6 grid gap-6 lg:grid-cols-2">
+          <article className="glass-panel p-6">
+            <p className="eyebrow">My Approach</p>
+            <ul className="mt-5 space-y-4">
+              {project.approach.map((item) => (
+                <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/80" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="glass-panel p-6">
+            <p className="eyebrow">Technical Details</p>
+            <ul className="mt-5 space-y-4">
+              {project.technicalDetails.map((item) => (
+                <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/80" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        <section className="mt-6">
+          <article className="glass-panel p-6">
+            <p className="eyebrow">Key Results</p>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              {project.results.map((item) => (
+                <div key={item} className="rounded-[1.4rem] border border-border/60 bg-background/45 p-4">
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
       </div>
     </div>
   );

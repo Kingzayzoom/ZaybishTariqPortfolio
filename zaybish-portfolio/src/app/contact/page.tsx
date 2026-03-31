@@ -3,13 +3,13 @@ import { ContactContent } from "@/components/sections/ContactContent";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Zaybish Tariq.",
+  description: "Get in touch with Zaybish Tariq for internships, SWE roles, or freelance projects.",
 };
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen pt-24">
-      <div className="mx-auto max-w-6xl px-6 py-12">
+    <div className="page-shell">
+      <div className="section-shell pt-32">
         <ContactContent />
       </div>
     </div>

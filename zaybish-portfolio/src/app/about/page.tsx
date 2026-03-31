@@ -3,13 +3,13 @@ import { AboutContent } from "@/components/sections/AboutContent";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Virginia Tech CS student, Full Stack Developer & ML Engineer.",
+  description: "Background, experience, and skills behind the products Zaybish Tariq builds.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-24">
-      <div className="mx-auto max-w-6xl px-6 py-12">
+    <div className="page-shell">
+      <div className="section-shell pt-32">
         <AboutContent />
       </div>
     </div>
