@@ -6,18 +6,49 @@ import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { skillGroups } from "@/data/skills";
 import { siteConfig } from "@/data/site-config";
 
+const skillColors = [
+  {
+    dot: "bg-violet-400",
+    pill: "border-violet-500/30 bg-violet-500/10 text-violet-300 hover:bg-violet-500/18 hover:border-violet-400/50",
+  },
+  {
+    dot: "bg-cyan-400",
+    pill: "border-cyan-500/30 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/18 hover:border-cyan-400/50",
+  },
+  {
+    dot: "bg-emerald-400",
+    pill: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/18 hover:border-emerald-400/50",
+  },
+  {
+    dot: "bg-fuchsia-400",
+    pill: "border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-300 hover:bg-fuchsia-500/18 hover:border-fuchsia-400/50",
+  },
+  {
+    dot: "bg-amber-400",
+    pill: "border-amber-500/30 bg-amber-500/10 text-amber-300 hover:bg-amber-500/18 hover:border-amber-400/50",
+  },
+  {
+    dot: "bg-sky-400",
+    pill: "border-sky-500/30 bg-sky-500/10 text-sky-300 hover:bg-sky-500/18 hover:border-sky-400/50",
+  },
+];
+
 export function AboutContent() {
   return (
-    <div className="grid gap-14 pb-10 lg:grid-cols-[0.95fr_1.4fr]">
-      <motion.aside
+    <div className="pb-10 space-y-10">
+
+      {/* ── Header ── */}
+      <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="space-y-6"
+        className="grid gap-10 lg:grid-cols-[1fr_1.5fr] items-start"
       >
-        <div className="glass-panel overflow-hidden p-5">
-          <div className="rounded-[1.75rem] border border-border/60 bg-[radial-gradient(circle_at_top_left,rgba(54,142,255,0.22),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(34,211,154,0.16),transparent_30%),rgba(255,255,255,0.04)] p-5">
-            <div className="overflow-hidden rounded-[1.5rem] border border-white/10">
+        {/* Photo + extras column */}
+        <div className="space-y-4">
+          {/* Photo card */}
+          <div className="panel-card overflow-hidden p-0">
+            <div className="relative overflow-hidden rounded-[1.75rem]">
               <Image
                 src="/images/headshot.jpg"
                 alt="Portrait of Zaybish Tariq"
@@ -26,162 +57,192 @@ export function AboutContent() {
                 className="h-auto w-full object-cover"
                 priority
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <p className="text-2xl font-semibold tracking-[-0.04em] text-white">{siteConfig.name}</p>
+                <p className="mt-1 text-sm text-white/70">{siteConfig.title}</p>
+                <div className="mt-3 flex items-center gap-2 text-xs text-white/55">
+                  <MapPin size={13} />
+                  {siteConfig.location}
+                </div>
+              </div>
             </div>
+          </div>
 
-            <h1 className="mt-6 text-4xl font-semibold tracking-[-0.05em]">{siteConfig.name}</h1>
-            <p className="mt-2 text-base text-muted-foreground">{siteConfig.title}</p>
-            <div className="mt-5 flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin size={15} />
-              {siteConfig.location}
+          {/* Affiliations */}
+          <div className="panel-card p-5">
+            <p className="eyebrow mb-4">Affiliated With</p>
+            <div className="flex items-center gap-4">
+              {[
+                { src: "/images/virginia-tech-logo.png", alt: "Virginia Tech" },
+                { src: "/images/colorstack-logo.jpg", alt: "ColorStack" },
+                { src: "/images/mlt-logo.jpg", alt: "MLT" },
+              ].map(({ src, alt }) => (
+                <div
+                  key={alt}
+                  className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white p-1"
+                >
+                  <Image src={src} alt={alt} width={40} height={40} className="h-full w-full object-contain" />
+                </div>
+              ))}
+              <div className="ml-1 space-y-0.5">
+                <p className="text-xs font-medium text-white/80">Virginia Tech</p>
+                <p className="text-xs text-muted-foreground">ColorStack · MLT Fellow</p>
+              </div>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{siteConfig.availability}</p>
+          </div>
+
+          {/* Fun facts */}
+          <div className="panel-card p-5">
+            <p className="eyebrow mb-4">Outside the Terminal</p>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { emoji: "🏋️", label: "Lifting" },
+                { emoji: "🥊", label: "UFC" },
+                { emoji: "🏂", label: "Snowboarding" },
+                { emoji: "⚔️", label: "Anime" },
+              ].map(({ emoji, label }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2.5"
+                >
+                  <span className="text-lg">{emoji}</span>
+                  <span className="text-sm text-slate-300">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="glass-panel p-6">
-          <p className="eyebrow">Quick Context</p>
-          <div className="mt-5 space-y-3">
-            <div className="rounded-2xl border border-border/60 bg-background/45 p-4">
-              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Background</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{siteConfig.identity.background}</p>
-            </div>
-            <div className="rounded-2xl border border-border/60 bg-background/45 p-4">
-              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Started With</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{siteConfig.identity.origin}</p>
-            </div>
-            <div className="rounded-2xl border border-border/60 bg-background/45 p-4">
-              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Based In</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{siteConfig.identity.base}</p>
-            </div>
+        {/* Bio */}
+        <div className="space-y-6">
+          <div>
+            <p className="eyebrow">About</p>
+            <h1 className="mt-4 text-balance text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl">
+              I started coding by solving a problem at home.
+            </h1>
           </div>
-        </div>
-
-        <div className="glass-panel p-6">
-          <p className="eyebrow">Links</p>
-          <div className="mt-5 space-y-3 text-sm">
-            <a
-              href={siteConfig.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/45 px-4 py-3 text-muted-foreground transition hover:text-foreground"
-            >
-              GitHub
-              <ArrowUpRight size={15} />
-            </a>
-            <a
-              href={siteConfig.socials.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/45 px-4 py-3 text-muted-foreground transition hover:text-foreground"
-            >
-              LinkedIn
-              <ArrowUpRight size={15} />
-            </a>
-            <a
-              href={`mailto:${siteConfig.socials.email}`}
-              className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/45 px-4 py-3 text-muted-foreground transition hover:text-foreground"
-            >
-              Email
-              <Mail size={15} />
-            </a>
-          </div>
-        </div>
-      </motion.aside>
-
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.08 }}
-        className="space-y-12"
-      >
-        <section className="space-y-5">
-          <p className="eyebrow">About</p>
-          <h2 className="text-balance text-5xl font-semibold tracking-[-0.05em]">
-            I started coding by solving a problem at home.
-          </h2>
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
             {siteConfig.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-        </section>
 
-        <section className="grid gap-6 md:grid-cols-2">
-          <article className="glass-panel p-6">
-            <p className="eyebrow">What Drives Me</p>
-            <p className="mt-5 text-xl font-semibold tracking-[-0.04em]">
-              Building software that creates real movement for real people.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              I care about useful products, strong engineering, and work that feels grounded in an actual need rather
-              than a throwaway demo.
-            </p>
-          </article>
+          {/* Links row */}
+          <div className="flex flex-wrap gap-3 pt-1">
+            <a
+              href={siteConfig.socials.github}
+              target="_blank"
+              rel="noreferrer"
+              className="secondary-button !px-4 !py-2.5 text-sm"
+            >
+              GitHub <ArrowUpRight size={14} />
+            </a>
+            <a
+              href={siteConfig.socials.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="secondary-button !px-4 !py-2.5 text-sm"
+            >
+              LinkedIn <ArrowUpRight size={14} />
+            </a>
+            <a
+              href={`mailto:${siteConfig.socials.email}`}
+              className="secondary-button !px-4 !py-2.5 text-sm"
+            >
+              <Mail size={14} /> Email
+            </a>
+          </div>
+        </div>
+      </motion.div>
 
-          <article className="glass-panel p-6">
-            <p className="eyebrow">Community</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {siteConfig.communities.map((community) => (
-                <span
-                  key={community}
-                  className="rounded-full border border-border/60 bg-background/45 px-3 py-1 text-xs text-muted-foreground"
-                >
-                  {community}
-                </span>
-              ))}
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Community has been a big part of how I grow as an engineer and how I want to show up for others.
-            </p>
-          </article>
-        </section>
+      {/* ── Drive + Community + Education row ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.08 }}
+        className="grid gap-6 md:grid-cols-3"
+      >
+        <article className="panel-card p-6">
+          <p className="eyebrow">What Drives Me</p>
+          <p className="mt-5 text-xl font-semibold tracking-[-0.04em] leading-snug">
+            Building software that creates real movement for real people.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            I care about useful products, strong engineering, and work grounded in an actual need — not a throwaway demo.
+          </p>
+        </article>
 
-        <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="glass-panel p-6">
-            <p className="eyebrow">Skills</p>
-            <div className="mt-6 space-y-5">
-              {skillGroups.map((group) => (
-                <div
-                  key={group.label}
-                  className="grid gap-3 border-b border-border/50 pb-5 last:border-b-0 last:pb-0 sm:grid-cols-[150px_1fr]"
-                >
-                  <p className="text-sm font-medium">{group.label}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {group.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-full border border-border/60 bg-background/45 px-3 py-1 text-xs text-muted-foreground"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+        <article className="panel-card p-6">
+          <p className="eyebrow">Community</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {siteConfig.communities.map((community) => (
+              <span
+                key={community}
+                className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs text-slate-300"
+              >
+                {community}
+              </span>
+            ))}
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Community has shaped how I think about growth, leadership, and creating room for other engineers to win.
+          </p>
+        </article>
+
+        <article className="panel-card p-6">
+          <p className="eyebrow">Education</p>
+          <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em]">{siteConfig.education.school}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">{siteConfig.education.degree}</p>
+          <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
+            <span>{siteConfig.education.gpa}</span>
+            <span className="h-px w-4 bg-white/15" />
+            <span>{siteConfig.education.graduation}</span>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {siteConfig.education.coursework.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs text-slate-400"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </article>
+      </motion.div>
+
+      {/* ── Skills ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.14 }}
+        className="panel-card p-7"
+      >
+        <p className="eyebrow mb-8">Skills</p>
+        <div className="space-y-7">
+          {skillGroups.map((group, i) => {
+            const color = skillColors[i % skillColors.length];
+            return (
+              <div key={group.label} className="grid gap-3 sm:grid-cols-[160px_1fr]">
+                <div className="flex items-center gap-2">
+                  <span className={`h-2 w-2 rounded-full shrink-0 ${color.dot}`} />
+                  <p className="text-sm font-medium text-white/80">{group.label}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="glass-panel p-6">
-            <p className="eyebrow">Education</p>
-            <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">{siteConfig.education.school}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {siteConfig.education.degree} · {siteConfig.education.gpa} · {siteConfig.education.graduation}
-            </p>
-            <div className="mt-6 space-y-3">
-              <p className="text-sm font-medium">Coursework</p>
-              <div className="flex flex-wrap gap-2">
-                {siteConfig.education.coursework.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-border/60 bg-background/45 px-3 py-1 text-xs text-muted-foreground"
-                  >
-                    {item}
-                  </span>
-                ))}
+                <div className="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-all duration-200 cursor-default ${color.pill}`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
+            );
+          })}
+        </div>
       </motion.div>
     </div>
   );

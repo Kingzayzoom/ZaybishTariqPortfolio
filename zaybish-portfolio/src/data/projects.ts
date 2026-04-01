@@ -32,6 +32,7 @@ export const projects: Project[] = [
       "Built at SEO NYC, NutriFit is a full-stack AI fitness platform that combines recommendation systems, nutrition intelligence, and social accountability into one product experience. It became the strongest portfolio lead because it blends ML depth with real product surface area.",
     tech: ["Python", "TensorFlow", "scikit-learn", "Flask", "React", "Next.js", "SQLite", "Firebase Auth"],
     date: "June - August 2025",
+    github: "https://github.com/sareemmomin21/Nutri-Fit",
     accent: "from-emerald-400 via-cyan-400 to-sky-500",
     metric: {
       label: "Best Overall",
@@ -135,7 +136,7 @@ export const projects: Project[] = [
       "TechKnow is a terminal-first interview prep tool built for focused practice. It combines a curated question bank with AI feedback so users can move beyond right-or-wrong answers into actual understanding.",
     tech: ["Python", "SQLite", "Google Gemini API"],
     date: "2024",
-    github: "https://github.com/kingzayzoom/TechKnow",
+    github: "https://github.com/keirannnelson/TechKnow",
     accent: "from-amber-400 via-orange-500 to-rose-500",
     metric: {
       label: "DSA Topics",

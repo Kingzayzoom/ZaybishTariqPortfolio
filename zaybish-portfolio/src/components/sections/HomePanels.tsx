@@ -107,7 +107,7 @@ export function HomePanels() {
                     <p className="mt-4 text-4xl font-semibold tracking-[-0.05em]">{featuredProject.title}</p>
                   </div>
                   <div className="hidden rounded-full border border-slate-900/15 bg-white/25 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-slate-900/70 sm:block">
-                    Case Study
+                    Project
                   </div>
                 </div>
 

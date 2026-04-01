@@ -73,7 +73,7 @@ export function FeaturedProjects() {
                   <div className="space-y-2">
                     <p className="text-sm text-slate-900/75">{project.summary}</p>
                     <div className="flex items-center gap-2 text-sm text-slate-900/75">
-                      View case study <ArrowRight size={15} className="transition group-hover:translate-x-1" />
+                      View project <ArrowRight size={15} className="transition group-hover:translate-x-1" />
                     </div>
                   </div>
                 </div>

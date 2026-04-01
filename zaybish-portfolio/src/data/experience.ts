@@ -110,7 +110,13 @@ export const experiences: Experience[] = [
     date: "Expected May 2028",
     type: "education",
     status: "active",
-    tech: ["Data Structures & Algorithms", "Computer Organization", "Discrete Math", "Software & Data Structures"],
+    tech: [
+      "Data Structures & Algorithms",
+      "Computer Systems",
+      "Computer Organization I & II",
+      "Discrete Math",
+      "Software & Data Structures",
+    ],
     bullets: [
       "Maintaining a 3.33 GPA while building a strong foundation in software engineering, systems, and problem solving.",
       "Pairing coursework with hands-on full-stack and AI project work outside the classroom to accelerate practical depth.",
