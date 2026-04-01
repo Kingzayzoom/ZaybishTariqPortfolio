@@ -63,11 +63,11 @@ export const projects: Project[] = [
     category: "Full-Stack · AI/NLP",
     title: "MediSend",
     shortDescription:
-      "AI-powered medical document platform using AWS Textract, Cohere embeddings, and Ollama LLM validation.",
+      "Built for the Georgetown Hackathon — AI-powered medical document platform using AWS Textract, Cohere embeddings, and Ollama LLM validation.",
     summary:
-      "MediSend is a medical document workflow app built to reduce manual review time. It combines OCR, embedding-based understanding, and LLM validation to turn messy uploads into structured, useful information.",
+      "Built at the Georgetown Hackathon, MediSend is a medical document workflow app built to reduce manual review time. It combines OCR, embedding-based understanding, and LLM validation to turn messy uploads into structured, useful information.",
     tech: ["React", "Next.js", "AWS Textract", "Cohere", "Ollama LLM", "Flask", "SQL", "JWT Auth"],
-    date: "January 2025",
+    date: "Georgetown Hackathon · January 2025",
     accent: "from-sky-500 via-blue-500 to-indigo-500",
     metric: {
       label: "Manual Review Reduced",
