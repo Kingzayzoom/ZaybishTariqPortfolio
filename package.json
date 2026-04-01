@@ -6,7 +6,7 @@
     "dev:server": "npm --prefix zaybish-portfolio run dev:server",
     "build": "npm --prefix zaybish-portfolio run build",
     "lint": "npm --prefix zaybish-portfolio run lint",
-    "vercel-build": "npm --prefix zaybish-portfolio install && npm --prefix zaybish-portfolio run build"
+    "vercel-build": "npm --prefix zaybish-portfolio install --include=dev && npm --prefix zaybish-portfolio run build"
   },
   "devDependencies": {
     "next": "16.2.1",
