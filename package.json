@@ -1,0 +1,16 @@
+{
+  "name": "zaybish-tariq-portfolio-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix zaybish-portfolio run dev",
+    "dev:server": "npm --prefix zaybish-portfolio run dev:server",
+    "build": "npm --prefix zaybish-portfolio run build",
+    "lint": "npm --prefix zaybish-portfolio run lint",
+    "vercel-build": "npm --prefix zaybish-portfolio install && npm --prefix zaybish-portfolio run build"
+  },
+  "devDependencies": {
+    "next": "16.2.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  }
+}
