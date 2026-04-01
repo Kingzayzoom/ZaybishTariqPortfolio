@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site-config";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { IntroAnimation } from "@/components/layout/IntroAnimation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,6 +77,7 @@ export default function RootLayout({
         />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <TooltipProvider>
+            <IntroAnimation />
             <div className="site-background" />
             <Navbar />
             <main>{children}</main>
