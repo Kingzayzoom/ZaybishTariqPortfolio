@@ -45,7 +45,7 @@ export function IntroAnimation() {
 
       {/* ── Black pill ── centered at the split seam */}
       <motion.div
-        className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-black"
+        className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-white/8 bg-[linear-gradient(180deg,rgba(8,8,10,0.98),rgba(0,0,0,1))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_18px_36px_rgba(0,0,0,0.35)]"
         style={{ borderRadius: 9999 }}
         initial={{ width: 0, height: 96, opacity: 1 }}
         animate={
@@ -55,12 +55,12 @@ export function IntroAnimation() {
         }
       >
         <motion.span
-          className="select-none font-mono text-xl tracking-[0.28em] uppercase text-white/80"
+          className="select-none font-mono text-xl font-extrabold tracking-[0.28em] uppercase text-[#ff3b30]"
           initial={{ opacity: 0 }}
           animate={{ opacity: cracking ? 0 : 1 }}
           transition={{ delay: 0.35, duration: 0.35 }}
         >
-          SWE Pill
+          CS Pill
         </motion.span>
       </motion.div>
 

@@ -22,26 +22,26 @@ const fadeUp: Variants = {
 
 export function Hero() {
   return (
-    <section className="section-shell pt-28">
+    <section className="section-shell pt-24 sm:pt-28">
       <div className="hero-horizon" />
 
-      <div className="mt-16 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="mt-8 grid gap-4 sm:mt-16 lg:grid-cols-[1.2fr_0.8fr]">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="show"
           custom={0}
-          className="panel-card px-7 py-10 sm:px-10 sm:py-12"
+          className="panel-card px-5 py-8 sm:px-10 sm:py-12"
         >
-          <div className="max-w-4xl space-y-6">
+          <div className="max-w-4xl space-y-5 sm:space-y-6">
             <p className="eyebrow">Pakistani-American Software Engineer | DMV Based</p>
 
-            <h1 className="text-balance text-5xl font-semibold leading-[0.96] tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance text-3xl font-semibold leading-[0.96] tracking-[-0.05em] text-white sm:text-5xl lg:text-7xl">
               Building strong software
               <span className="magenta-accent"> with product depth</span>
             </h1>
 
-            <p className="max-w-3xl text-lg leading-relaxed text-slate-300 sm:text-xl">{siteConfig.heroSubtitle}</p>
+            <p className="max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg sm:text-xl">{siteConfig.heroSubtitle}</p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link href="/projects" className="primary-button">
@@ -78,7 +78,7 @@ export function Hero() {
           initial="hidden"
           animate="show"
           custom={1}
-          className="panel-card px-7 py-8 sm:px-8"
+          className="panel-card px-5 py-6 sm:px-8 sm:py-8"
         >
           <div className="space-y-6">
             <div className="flex items-center gap-4">

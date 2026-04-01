@@ -11,7 +11,7 @@ export function FeaturedProjects() {
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-2xl space-y-4">
           <p className="eyebrow">Case Studies</p>
-          <h2 className="text-balance text-5xl font-semibold tracking-[-0.05em] text-white sm:text-6xl">
+          <h2 className="text-balance text-3xl font-semibold tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">
             Curated <span className="magenta-accent">work</span>
           </h2>
           <p className="text-base leading-relaxed text-slate-300 sm:text-lg">
@@ -63,7 +63,7 @@ export function FeaturedProjects() {
                 </div>
               </div>
 
-              <div className={`project-cover relative rounded-[1.5rem] border border-white/8 bg-gradient-to-br ${project.accent} p-5 text-slate-950`}>
+              <div className={`project-cover relative hidden rounded-[1.5rem] border border-white/8 bg-gradient-to-br ${project.accent} p-5 text-slate-950 lg:block`}>
                 <div className="interactive-grid rounded-[1.2rem]" />
                 <div className="relative flex h-full min-h-52 flex-col justify-between rounded-[1.2rem] border border-white/20 bg-white/12 p-5 backdrop-blur">
                   <div>

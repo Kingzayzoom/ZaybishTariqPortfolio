@@ -50,7 +50,7 @@ export function ProjectsGrid() {
             </div>
 
             <div
-              className={`project-cover relative rounded-[1.5rem] border border-white/10 bg-gradient-to-br ${project.accent} p-5 text-slate-950`}
+              className={`project-cover relative hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-br ${project.accent} p-5 text-slate-950 lg:block`}
             >
               <div className="interactive-grid rounded-[1.2rem]" />
               <div className="relative flex h-full min-h-52 flex-col justify-between rounded-[1.2rem] border border-white/20 bg-white/12 p-5 backdrop-blur">

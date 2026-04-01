@@ -50,7 +50,7 @@ export function ContactContent() {
         className="mb-14 max-w-3xl space-y-5"
       >
         <p className="eyebrow">Contact</p>
-        <h1 className="text-balance text-5xl font-semibold tracking-[-0.05em] sm:text-6xl lg:text-7xl">
+        <h1 className="text-balance text-3xl font-semibold tracking-[-0.05em] sm:text-5xl lg:text-7xl">
           Let&apos;s build something worth remembering.
         </h1>
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
@@ -90,7 +90,7 @@ export function ContactContent() {
           </a>
 
           {/* LinkedIn + GitHub */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {links.slice(1).map((link) => (
               <a
                 key={link.label}

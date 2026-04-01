@@ -43,7 +43,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <section className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <p className="eyebrow">{project.category}</p>
-            <h1 className="text-balance text-5xl font-semibold tracking-[-0.06em] sm:text-6xl">{project.title}</h1>
+            <h1 className="text-balance text-3xl font-semibold tracking-[-0.06em] sm:text-5xl lg:text-6xl">{project.title}</h1>
             <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">{project.summary}</p>
 
             <div className="flex flex-wrap gap-2">
@@ -74,7 +74,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
 
           <div className={`project-cover rounded-[2rem] border border-white/10 bg-gradient-to-br ${project.accent} p-6 text-slate-950`}>
-            <div className="relative flex h-full min-h-72 flex-col justify-between rounded-[1.6rem] border border-white/20 bg-white/12 p-6 backdrop-blur">
+            <div className="relative flex h-full min-h-48 flex-col justify-between rounded-[1.6rem] border border-white/20 bg-white/12 p-6 backdrop-blur lg:min-h-72">
               <div className="space-y-3">
                 <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-900/70">{project.metric.label}</p>
                 <p className="text-5xl font-semibold tracking-[-0.06em]">{project.metric.value}</p>

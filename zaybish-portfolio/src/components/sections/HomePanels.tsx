@@ -22,7 +22,7 @@ export function HomePanels() {
           <div className="flex h-full flex-col justify-between">
             <div className="space-y-4">
               <p className="eyebrow">What I Do</p>
-              <h2 className="text-balance text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
+              <h2 className="text-balance text-2xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
                 Software engineering first. AI engineering where it creates leverage.
               </h2>
               <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
@@ -73,7 +73,7 @@ export function HomePanels() {
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="eyebrow">Featured Project</p>
-              <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] text-white">
+              <h2 className="mt-4 text-balance text-2xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
                 The project that best represents my work
               </h2>
             </div>
@@ -104,7 +104,7 @@ export function HomePanels() {
                     <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-900/65">
                       {featuredProject.category}
                     </p>
-                    <p className="mt-4 text-4xl font-semibold tracking-[-0.05em]">{featuredProject.title}</p>
+                    <p className="mt-4 text-2xl font-semibold tracking-[-0.05em] sm:text-4xl">{featuredProject.title}</p>
                   </div>
                   <div className="hidden rounded-full border border-slate-900/15 bg-white/25 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-slate-900/70 sm:block">
                     Project
@@ -130,7 +130,7 @@ export function HomePanels() {
 
                 <div className="mt-6 flex items-end justify-between gap-4">
                   <div>
-                    <p className="text-4xl font-semibold tracking-[-0.05em]">{featuredProject.metric.value}</p>
+                    <p className="text-2xl font-semibold tracking-[-0.05em] sm:text-4xl">{featuredProject.metric.value}</p>
                     <p className="text-sm text-slate-900/75">{featuredProject.metric.label}</p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -149,7 +149,7 @@ export function HomePanels() {
       <motion.div whileHover={{ y: -4 }} className="panel-card mt-4">
         <div className="max-w-3xl">
           <p className="eyebrow">Skills & Tools</p>
-          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
+          <h2 className="mt-4 text-balance text-2xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
             Built with the stack I actually use
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">

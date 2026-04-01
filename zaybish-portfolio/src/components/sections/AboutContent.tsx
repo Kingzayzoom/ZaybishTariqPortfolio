@@ -120,7 +120,7 @@ export function AboutContent() {
         <div className="space-y-6">
           <div>
             <p className="eyebrow">About</p>
-            <h1 className="mt-4 text-balance text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl">
+            <h1 className="mt-4 text-balance text-3xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-5xl lg:text-6xl">
               I started coding by solving a problem at home.
             </h1>
           </div>
