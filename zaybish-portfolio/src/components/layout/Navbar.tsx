@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/social-icons";
+import { siteConfig } from "@/data/site-config";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -12,7 +14,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/projects", label: "Work" },
   { href: "/experience", label: "Experience" },
-  { href: "/contact", label: "Book a Call" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -44,6 +46,33 @@ export function Navbar() {
         </div>
 
         <div className="mt-1 flex items-center gap-3">
+          <div className="hidden items-center gap-2 md:flex">
+            <a
+              href={siteConfig.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="floating-pill flex h-10 w-10 items-center justify-center text-slate-300 transition hover:-translate-y-0.5 hover:text-white"
+            >
+              <GithubIcon size={16} />
+            </a>
+            <a
+              href={siteConfig.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="floating-pill flex h-10 w-10 items-center justify-center text-slate-300 transition hover:-translate-y-0.5 hover:text-white"
+            >
+              <LinkedinIcon size={16} />
+            </a>
+            <a
+              href={`mailto:${siteConfig.socials.email}`}
+              aria-label="Email"
+              className="floating-pill flex h-10 w-10 items-center justify-center text-slate-300 transition hover:-translate-y-0.5 hover:text-white"
+            >
+              <Mail size={16} />
+            </a>
+          </div>
           <ThemeToggle />
           <button
             className="floating-pill rounded-full p-2 text-slate-100 md:hidden"
@@ -80,6 +109,33 @@ export function Navbar() {
                 className="block rounded-xl px-3 py-2 text-sm text-slate-300"
               >
                 Resume
+              </a>
+            </li>
+            <li className="flex items-center gap-3 pt-2">
+              <a
+                href={siteConfig.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="floating-pill flex h-10 w-10 items-center justify-center text-slate-300 transition hover:text-white"
+                aria-label="GitHub"
+              >
+                <GithubIcon size={16} />
+              </a>
+              <a
+                href={siteConfig.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="floating-pill flex h-10 w-10 items-center justify-center text-slate-300 transition hover:text-white"
+                aria-label="LinkedIn"
+              >
+                <LinkedinIcon size={16} />
+              </a>
+              <a
+                href={`mailto:${siteConfig.socials.email}`}
+                className="floating-pill flex h-10 w-10 items-center justify-center text-slate-300 transition hover:text-white"
+                aria-label="Email"
+              >
+                <Mail size={16} />
               </a>
             </li>
           </ul>

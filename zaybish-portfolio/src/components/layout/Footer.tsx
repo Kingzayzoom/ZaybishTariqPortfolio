@@ -29,10 +29,12 @@ export function Footer() {
       <div className="border-y border-white/8 py-3">
         <div className="marquee-track">
           <span>Open to Work</span>
-          <span>Full Stack + ML</span>
+          <span>Software Engineer</span>
+          <span>AI Engineering Depth</span>
           <span>Virginia Tech CS</span>
           <span>Open to Work</span>
-          <span>Full Stack + ML</span>
+          <span>Software Engineer</span>
+          <span>AI Engineering Depth</span>
           <span>Virginia Tech CS</span>
         </div>
       </div>
@@ -45,7 +47,7 @@ export function Footer() {
               {siteConfig.title}. Thanks for checking out my site.
             </p>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-500">
-              © {new Date().getFullYear()} {siteConfig.name}
+              (c) {new Date().getFullYear()} {siteConfig.name}
             </p>
           </div>
           <div className="flex items-center gap-4">

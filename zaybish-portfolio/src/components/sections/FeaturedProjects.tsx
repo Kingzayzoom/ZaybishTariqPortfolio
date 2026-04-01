@@ -29,12 +29,13 @@ export function FeaturedProjects() {
             key={project.slug}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -6 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.45, delay: index * 0.06 }}
+            transition={{ duration: 0.45, delay: index * 0.06, type: "spring", stiffness: 180, damping: 18 }}
           >
             <Link
               href={`/projects/${project.slug}`}
-              className="group grid gap-6 rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,20,0.92),rgba(13,13,15,0.97))] p-6 transition hover:-translate-y-1 hover:border-white/20 lg:grid-cols-[90px_minmax(0,1fr)_300px]"
+              className="group grid gap-6 rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,20,0.92),rgba(13,13,15,0.97))] p-6 transition hover:border-white/20 lg:grid-cols-[90px_minmax(0,1fr)_300px]"
             >
               <div className="flex items-start justify-between lg:block">
                 <p className="font-mono text-4xl text-slate-600">{project.number}</p>
@@ -62,7 +63,8 @@ export function FeaturedProjects() {
                 </div>
               </div>
 
-              <div className={`project-cover rounded-[1.5rem] border border-white/8 bg-gradient-to-br ${project.accent} p-5 text-slate-950`}>
+              <div className={`project-cover relative rounded-[1.5rem] border border-white/8 bg-gradient-to-br ${project.accent} p-5 text-slate-950`}>
+                <div className="interactive-grid rounded-[1.2rem]" />
                 <div className="relative flex h-full min-h-52 flex-col justify-between rounded-[1.2rem] border border-white/20 bg-white/12 p-5 backdrop-blur">
                   <div>
                     <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-900/65">{project.metric.label}</p>

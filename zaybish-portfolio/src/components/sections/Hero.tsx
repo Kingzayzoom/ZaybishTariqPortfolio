@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/social-icons";
 import { siteConfig } from "@/data/site-config";
 
 const fadeUp: Variants = {
@@ -24,7 +25,7 @@ export function Hero() {
     <section className="section-shell pt-28">
       <div className="hero-horizon" />
 
-      <div className="mt-2 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="mt-16 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -33,7 +34,7 @@ export function Hero() {
           className="panel-card px-7 py-10 sm:px-10 sm:py-12"
         >
           <div className="max-w-4xl space-y-6">
-            <p className="eyebrow">Pakistani-American Software Engineer · DMV Based</p>
+            <p className="eyebrow">Pakistani-American Software Engineer | DMV Based</p>
 
             <h1 className="text-balance text-5xl font-semibold leading-[0.96] tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl">
               Building strong software
@@ -48,6 +49,25 @@ export function Hero() {
               </Link>
               <a href={`mailto:${siteConfig.socials.email}`} className="secondary-button">
                 <Mail size={16} /> Get In Touch
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <a
+                href={siteConfig.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="secondary-button !px-4 !py-2.5"
+              >
+                <GithubIcon size={16} /> GitHub
+              </a>
+              <a
+                href={siteConfig.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="secondary-button !px-4 !py-2.5"
+              >
+                <LinkedinIcon size={16} /> LinkedIn
               </a>
             </div>
           </div>
@@ -75,7 +95,7 @@ export function Hero() {
               <div>
                 <p className="text-2xl font-semibold tracking-[-0.04em] text-white">{siteConfig.name}</p>
                 <p className="mt-1 text-sm text-slate-300">
-                  {siteConfig.title} <span className="text-slate-500">·</span> AI Engineer when needed
+                  {siteConfig.title} <span className="text-slate-500">|</span> AI Engineer when needed
                 </p>
                 <p className="mt-3 text-xs uppercase tracking-[0.22em] text-slate-500">{siteConfig.location}</p>
               </div>

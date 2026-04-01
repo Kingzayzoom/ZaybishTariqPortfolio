@@ -110,10 +110,15 @@ export const experiences: Experience[] = [
     date: "Expected May 2028",
     type: "education",
     status: "active",
+    tech: ["Data Structures & Algorithms", "Computer Organization", "Discrete Math", "Software & Data Structures"],
     bullets: [
-      "GPA: 3.33.",
-      "Relevant coursework: Data Structures & Algorithms, Computer Organization, Software & Data Structures, Discrete Math.",
+      "Maintaining a 3.33 GPA while building a strong foundation in software engineering, systems, and problem solving.",
+      "Pairing coursework with hands-on full-stack and AI project work outside the classroom to accelerate practical depth.",
     ],
+    logo: {
+      src: "/images/virginia-tech-logo.png",
+      alt: "Virginia Tech logo",
+    },
   },
 ];
 
