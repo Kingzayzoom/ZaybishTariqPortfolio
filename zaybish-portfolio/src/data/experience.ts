@@ -118,7 +118,7 @@ export const experiences: Experience[] = [
       "Software & Data Structures",
     ],
     bullets: [
-      "Maintaining a 3.33 GPA while building a strong foundation in software engineering, systems, and problem solving.",
+      "Building a strong foundation in software engineering, systems, and problem solving.",
       "Pairing coursework with hands-on full-stack and AI project work outside the classroom to accelerate practical depth.",
     ],
     logo: {

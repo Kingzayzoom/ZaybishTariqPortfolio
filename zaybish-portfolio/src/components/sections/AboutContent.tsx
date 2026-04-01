@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Dumbbell, Swords, Mountain, Tv, FileText } from "lucide-react";
 import { skillGroups } from "@/data/skills";
 import { siteConfig } from "@/data/site-config";
 
@@ -31,6 +31,13 @@ const skillColors = [
     dot: "bg-sky-400",
     pill: "border-sky-500/30 bg-sky-500/10 text-sky-300 hover:bg-sky-500/18 hover:border-sky-400/50",
   },
+];
+
+const interests = [
+  { icon: Dumbbell, label: "Lifting", color: "text-orange-400 bg-orange-500/10 border-orange-500/25" },
+  { icon: Swords,   label: "UFC",      color: "text-red-400 bg-red-500/10 border-red-500/25" },
+  { icon: Mountain, label: "Snowboarding", color: "text-sky-400 bg-sky-500/10 border-sky-500/25" },
+  { icon: Tv,       label: "Anime",    color: "text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/25" },
 ];
 
 export function AboutContent() {
@@ -92,22 +99,17 @@ export function AboutContent() {
             </div>
           </div>
 
-          {/* Fun facts */}
+          {/* Outside the terminal */}
           <div className="panel-card p-5">
             <p className="eyebrow mb-4">Outside the Terminal</p>
             <div className="grid grid-cols-2 gap-2">
-              {[
-                { emoji: "🏋️", label: "Lifting" },
-                { emoji: "🥊", label: "UFC" },
-                { emoji: "🏂", label: "Snowboarding" },
-                { emoji: "⚔️", label: "Anime" },
-              ].map(({ emoji, label }) => (
+              {interests.map(({ icon: Icon, label, color }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2.5"
+                  className={`flex items-center gap-2.5 rounded-xl border px-3 py-2.5 ${color}`}
                 >
-                  <span className="text-lg">{emoji}</span>
-                  <span className="text-sm text-slate-300">{label}</span>
+                  <Icon size={16} className="shrink-0" />
+                  <span className="text-sm font-medium">{label}</span>
                 </div>
               ))}
             </div>
@@ -130,6 +132,14 @@ export function AboutContent() {
 
           {/* Links row */}
           <div className="flex flex-wrap gap-3 pt-1">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="primary-button"
+            >
+              <FileText size={15} /> View Resume
+            </a>
             <a
               href={siteConfig.socials.github}
               target="_blank"
@@ -156,67 +166,11 @@ export function AboutContent() {
         </div>
       </motion.div>
 
-      {/* ── Drive + Community + Education row ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.08 }}
-        className="grid gap-6 md:grid-cols-3"
-      >
-        <article className="panel-card p-6">
-          <p className="eyebrow">What Drives Me</p>
-          <p className="mt-5 text-xl font-semibold tracking-[-0.04em] leading-snug">
-            Building software that creates real movement for real people.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            I care about useful products, strong engineering, and work grounded in an actual need — not a throwaway demo.
-          </p>
-        </article>
-
-        <article className="panel-card p-6">
-          <p className="eyebrow">Community</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {siteConfig.communities.map((community) => (
-              <span
-                key={community}
-                className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs text-slate-300"
-              >
-                {community}
-              </span>
-            ))}
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Community has shaped how I think about growth, leadership, and creating room for other engineers to win.
-          </p>
-        </article>
-
-        <article className="panel-card p-6">
-          <p className="eyebrow">Education</p>
-          <h3 className="mt-5 text-xl font-semibold tracking-[-0.04em]">{siteConfig.education.school}</h3>
-          <p className="mt-1 text-sm text-muted-foreground">{siteConfig.education.degree}</p>
-          <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
-            <span>{siteConfig.education.gpa}</span>
-            <span className="h-px w-4 bg-white/15" />
-            <span>{siteConfig.education.graduation}</span>
-          </div>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {siteConfig.education.coursework.map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs text-slate-400"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </article>
-      </motion.div>
-
       {/* ── Skills ── */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.14 }}
+        transition={{ duration: 0.45, delay: 0.08 }}
         className="panel-card p-7"
       >
         <p className="eyebrow mb-8">Skills</p>

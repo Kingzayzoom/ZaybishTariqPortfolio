@@ -9,7 +9,7 @@ export const siteConfig = {
   education: {
     school: "Virginia Tech",
     degree: "B.S. Computer Science",
-    gpa: "3.33 GPA",
+    gpa: "",
     graduation: "May 2028",
     coursework: [
       "Data Structures & Algorithms",
